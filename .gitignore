@@ -1,0 +1,11 @@
+# Test project
+MGL.Tester/
+
+# Binaries
+**/bin/
+**/obj/
+
+# Visual Studio files
+.vs/
+**.sln
+**.csproj
