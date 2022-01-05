@@ -10,6 +10,7 @@ Includes features such as:
 
 ## License
 
-The LICENSE file includes:
-  * MIT license for MGL 
+The LICENSE file includes the MIT license for MGL.
+
+The EXTERNAL LICENSES file includes:
   * MIT license for the code used from [Flat](https://github.com/twobitcoder101/Flat)
