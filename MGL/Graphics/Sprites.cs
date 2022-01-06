@@ -4,14 +4,14 @@ using System;
 
 namespace MGL.Graphics
 {
-    public sealed class MGLSprites : IDisposable
+    public sealed class Sprites : IDisposable
     {
         private bool _isDisposed;
         private Game _game;
         private SpriteBatch _sprites;
         private BasicEffect _effect;
 
-        public MGLSprites(Game game)
+        public Sprites(Game game)
         {
             _game = game ?? throw new ArgumentNullException("game");
             _isDisposed = false;

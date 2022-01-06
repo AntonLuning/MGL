@@ -55,7 +55,7 @@ namespace MGL.Graphics
             _isSet = false;
         }
 
-        public void Present(MGLSprites sprites, bool textureFiltering = true)
+        public void Present(Sprites sprites, bool textureFiltering = true)
         {
             if (sprites == null)
                 throw new ArgumentNullException("sprites");
