@@ -3,7 +3,7 @@ using System;
 
 namespace MGL.Graphics
 {
-    public sealed partial class MGLShapes : IDisposable
+    public sealed partial class Shapes : IDisposable
     {
         public enum PointShape
         {

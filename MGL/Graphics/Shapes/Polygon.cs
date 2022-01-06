@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace MGL.Graphics
 {
-    public sealed partial class MGLShapes : IDisposable
+    public sealed partial class Shapes : IDisposable
     {
         private bool IsPolygonSelfIntersecting(Vector2[] vertices)
         {

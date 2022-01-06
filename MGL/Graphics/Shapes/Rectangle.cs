@@ -4,7 +4,7 @@ using System;
 
 namespace MGL.Graphics
 {
-    public sealed partial class MGLShapes : IDisposable
+    public sealed partial class Shapes : IDisposable
     {
         private void AddRectangleData(float pt1X, float pt1Y, float pt2X, float pt2Y, float pt3X, float pt3Y, float pt4X, float pt4Y, Color color)
         {

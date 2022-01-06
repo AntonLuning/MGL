@@ -3,7 +3,7 @@ using System;
 
 namespace MGL.Graphics
 {
-    public sealed partial class MGLShapes : IDisposable
+    public sealed partial class Shapes : IDisposable
     {
         public void DrawLine(float x1, float y1, float x2, float y2, float thickness, Color color)
         {

@@ -4,7 +4,7 @@ using System;
 
 namespace MGL.Graphics
 {
-    public sealed partial class MGLShapes : IDisposable
+    public sealed partial class Shapes : IDisposable
     {
         private const int MAX_VERTEX_COUNT = 1024;
         private const int MAX_INDEX_COUNT = 3072;   // 3 * MAX_VERTEX_COUNT
@@ -25,7 +25,7 @@ namespace MGL.Graphics
 
         private bool _isStarted;
 
-        public MGLShapes(Game game)
+        public Shapes(Game game)
         {
             _game = game ?? throw new ArgumentNullException("game");
             _isDisposed = false;
