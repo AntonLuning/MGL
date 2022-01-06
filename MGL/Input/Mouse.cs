@@ -5,25 +5,25 @@ using System;
 
 namespace MGL.Input
 {
-    public sealed class MGLMouse
+    public sealed class Mouse
     {
-        private static readonly Lazy<MGLMouse> _lazy = new Lazy<MGLMouse>(() => new MGLMouse());
-        public static MGLMouse Instance { get { return _lazy.Value; } }
+        private static readonly Lazy<Mouse> _lazy = new Lazy<Mouse>(() => new Mouse());
+        public static Mouse Instance { get { return _lazy.Value; } }
 
         private MouseState _state;
         private MouseState _previousState;
         public Point WindowPosition { get { return _state.Position; } }
 
-        public MGLMouse()
+        public Mouse()
         {
-            _previousState = Mouse.GetState();
+            _previousState = Microsoft.Xna.Framework.Input.Mouse.GetState();
             _state = _previousState;
         }
 
         public void Update()
         {         
             _previousState = _state;
-            _state = Mouse.GetState();
+            _state = Microsoft.Xna.Framework.Input.Mouse.GetState();
         }
 
         public bool IsLeftButtonDown()
@@ -66,7 +66,7 @@ namespace MGL.Input
             return _previousState.ScrollWheelValue > _state.ScrollWheelValue;
         }
 
-        public Vector2 GetScreenPosition(MGLScreen screen)
+        public Vector2 GetScreenPosition(Screen screen)
         {
             Rectangle screenDestinationRectangle = screen.CalculateDestinationRectangle();
 

@@ -3,17 +3,17 @@ using System;
 
 namespace MGL.Graphics
 {
-    public sealed partial class MGLShapes : IDisposable
+    public sealed partial class Shapes : IDisposable
     {
         public void DrawLine(float x1, float y1, float x2, float y2, float thickness, Color color)
         {
-            thickness = MGLUtil.Clamp(thickness, MIN_LINE_THICKNESS, MAX_LINE_THICKNESS);
+            thickness = Util.Clamp(thickness, MIN_LINE_THICKNESS, MAX_LINE_THICKNESS);
             if (_camera != null)
                 thickness *= _camera.Z / _camera.BaseZ;
 
             float e1X = x2 - x1;
             float e1Y = y2 - y1;
-            MGLUtil.Normalize(ref e1X, ref e1Y);
+            Util.Normalize(ref e1X, ref e1Y);
             e1X *= thickness / 2f;
             e1Y *= thickness / 2f;
             float e2X = -e1X;

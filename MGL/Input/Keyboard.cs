@@ -3,24 +3,24 @@ using System;
 
 namespace MGL.Input
 {
-    public sealed class MGLKeyboard
+    public sealed class Keyboard
     {
-        private static readonly Lazy<MGLKeyboard> _lazy = new Lazy<MGLKeyboard>(() => new MGLKeyboard());
-        public static MGLKeyboard Instance { get { return _lazy.Value; } }
+        private static readonly Lazy<Keyboard> _lazy = new Lazy<Keyboard>(() => new Keyboard());
+        public static Keyboard Instance { get { return _lazy.Value; } }
 
         private KeyboardState _state;
         private KeyboardState _previousState;
 
-        public MGLKeyboard()
+        public Keyboard()
         {
-            _previousState = Keyboard.GetState();
+            _previousState = Microsoft.Xna.Framework.Input.Keyboard.GetState();
             _state = _previousState;
         }
 
         public void Update()
         {
             _previousState = _state;
-            _state = Keyboard.GetState();
+            _state = Microsoft.Xna.Framework.Input.Keyboard.GetState();
         }
 
         public bool IsKeyDown(Keys key)

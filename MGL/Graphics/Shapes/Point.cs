@@ -3,7 +3,7 @@ using System;
 
 namespace MGL.Graphics
 {
-    public sealed partial class MGLShapes : IDisposable
+    public sealed partial class Shapes : IDisposable
     {
         public enum PointShape
         {
@@ -23,7 +23,7 @@ namespace MGL.Graphics
 
         public void DrawPoint(Vector2 position, float size, Color color)
         {
-            float radius = MGLUtil.Clamp(0.5f * size, 2f, 10f);
+            float radius = Util.Clamp(0.5f * size, 2f, 10f);
             if (_camera != null)
                 radius *= _camera.Z / _camera.BaseZ;
 
@@ -37,7 +37,7 @@ namespace MGL.Graphics
 
         public void DrawPoint(Vector2 position, float size, PointShape? shape, Color color)
         {
-            float radius = MGLUtil.Clamp(0.5f * size, 2f, 10f);
+            float radius = Util.Clamp(0.5f * size, 2f, 10f);
             if (_camera != null)
             { 
                 size *= _camera.Z / _camera.BaseZ;

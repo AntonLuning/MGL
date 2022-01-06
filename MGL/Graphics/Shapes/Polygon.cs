@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace MGL.Graphics
 {
-    public sealed partial class MGLShapes : IDisposable
+    public sealed partial class Shapes : IDisposable
     {
         private bool IsPolygonSelfIntersecting(Vector2[] vertices)
         {
@@ -41,13 +41,13 @@ namespace MGL.Graphics
             Vector2 bp = pt - trianglePt2;
             Vector2 cp = pt - trianglePt3;
 
-            if (MGLUtil.Cross(ab, ap) > 0f || MGLUtil.Cross(bc, bp) > 0f || MGLUtil.Cross(ca, cp) > 0f)
+            if (Util.Cross(ab, ap) > 0f || Util.Cross(bc, bp) > 0f || Util.Cross(ca, cp) > 0f)
                 return false;
 
             return true;
         }
 
-        public void DrawPolygonFilled(Vector2[] vertices, MGLTransform transform, Color color)
+        public void DrawPolygonFilled(Vector2[] vertices, Transform transform, Color color)
         {
             if (!_isStarted)
                 throw new InvalidOperationException("Batching not started.");
@@ -77,14 +77,14 @@ namespace MGL.Graphics
                 for (int i = 0; i < indexList.Count; i++)
                 {
                     int index1 = indexList[i];
-                    int index2 = MGLUtil.GetItem(indexList, i - 1);
-                    int index3 = MGLUtil.GetItem(indexList, i + 1);
+                    int index2 = Util.GetItem(indexList, i - 1);
+                    int index3 = Util.GetItem(indexList, i + 1);
 
                     Vector2 pt1 = vertices[index1];
                     Vector2 pt2 = vertices[index2];
                     Vector2 pt3 = vertices[index3];
 
-                    if (MGLUtil.Cross(pt2 - pt1, pt3 - pt1) < 0f)
+                    if (Util.Cross(pt2 - pt1, pt3 - pt1) < 0f)
                         continue;
 
                     bool triangleOK = true;
@@ -119,7 +119,7 @@ namespace MGL.Graphics
 
             for (int i = 0; i < shapeVertexCount; i++)
             {
-                Vector2 pt = MGLUtil.Transform(vertices[i], transform);
+                Vector2 pt = Util.Transform(vertices[i], transform);
 
                 _vertices[_vertexCount++] = new VertexPositionColor(new Vector3(pt, 0f), color);
             }
@@ -129,18 +129,18 @@ namespace MGL.Graphics
 
         public void DrawPolygonFilled(Vector2[] vertices, Color color)
         {
-            DrawPolygonFilled(vertices, MGLTransform.Identity, color);
+            DrawPolygonFilled(vertices, Transform.Identity, color);
         }
 
-        public void DrawPolygon(Vector2[] vertices, MGLTransform transform, float thickness, Color color)
+        public void DrawPolygon(Vector2[] vertices, Transform transform, float thickness, Color color)
         {
             if (vertices == null || vertices.Length < 3 || vertices.Length > MAX_VERTEX_COUNT)
                 throw new ArgumentException($"Must be between 3 and {MAX_VERTEX_COUNT} number of vertices.");
 
             for (int i = 0; i < vertices.Length; i++)
             {
-                Vector2 startPt = MGLUtil.Transform(vertices[i], transform);
-                Vector2 endPt = MGLUtil.Transform(vertices[(i + 1) % vertices.Length], transform);
+                Vector2 startPt = Util.Transform(vertices[i], transform);
+                Vector2 endPt = Util.Transform(vertices[(i + 1) % vertices.Length], transform);
 
                 DrawLine(startPt, endPt, thickness, color);
             }
@@ -148,7 +148,7 @@ namespace MGL.Graphics
 
         public void DrawPolygon(Vector2[] vertices, float thickness, Color color)
         {
-            DrawPolygon(vertices, MGLTransform.Identity, thickness, color);
+            DrawPolygon(vertices, Transform.Identity, thickness, color);
         }
     }
 }

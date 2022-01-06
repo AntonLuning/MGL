@@ -3,7 +3,7 @@ using System;
 
 namespace MGL
 {
-    public struct MGLTransform
+    public struct Transform
     {
         public float PosX;
         public float PosY;
@@ -12,9 +12,9 @@ namespace MGL
         public float ScaleX;
         public float ScaleY;
 
-        public static readonly MGLTransform Identity = new MGLTransform(Vector2.Zero, 0f, 1f);
+        public static readonly Transform Identity = new Transform(Vector2.Zero, 0f, 1f);
 
-        public MGLTransform(Vector2 position, float angle, Vector2 scale)
+        public Transform(Vector2 position, float angle, Vector2 scale)
         {
             PosX = position.X;
             PosY = position.Y;
@@ -24,7 +24,7 @@ namespace MGL
             ScaleY = scale.Y;
         }
 
-        public MGLTransform(Vector2 position, float angle, float scale)
+        public Transform(Vector2 position, float angle, float scale)
         {
             PosX = position.X;
             PosY = position.Y;

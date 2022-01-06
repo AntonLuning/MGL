@@ -40,7 +40,7 @@ namespace MGL.Graphics
             _isDisposed = true;
         }
 
-        public void Begin(MGLCamera camera, bool isTextureFilteringEnabled)
+        public void Begin(Camera camera, bool isTextureFilteringEnabled)
         {
             SamplerState samplerState = isTextureFilteringEnabled ? SamplerState.LinearClamp : SamplerState.PointClamp;
 

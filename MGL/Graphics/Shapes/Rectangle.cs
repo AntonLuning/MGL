@@ -4,7 +4,7 @@ using System;
 
 namespace MGL.Graphics
 {
-    public sealed partial class MGLShapes : IDisposable
+    public sealed partial class Shapes : IDisposable
     {
         private void AddRectangleData(float pt1X, float pt1Y, float pt2X, float pt2Y, float pt3X, float pt3Y, float pt4X, float pt4Y, Color color)
         {
@@ -80,7 +80,7 @@ namespace MGL.Graphics
             AddRectangleData(p1X, p1Y, p2X, p2Y, p3X, p3Y, p4X, p4Y, color);
         }
 
-        public void DrawRectangleFilled(float x, float y, float width, float height, MGLTransform transform, Color color)
+        public void DrawRectangleFilled(float x, float y, float width, float height, Transform transform, Color color)
         {
             float p1X = x;
             float p1Y = y + height;
@@ -91,10 +91,10 @@ namespace MGL.Graphics
             float p4X = x;
             float p4Y = y;
 
-            Vector2 pt1 = MGLUtil.Transform(p1X, p1Y, transform);
-            Vector2 pt2 = MGLUtil.Transform(p2X, p2Y, transform);
-            Vector2 pt3 = MGLUtil.Transform(p3X, p3Y, transform);
-            Vector2 pt4 = MGLUtil.Transform(p4X, p4Y, transform);
+            Vector2 pt1 = Util.Transform(p1X, p1Y, transform);
+            Vector2 pt2 = Util.Transform(p2X, p2Y, transform);
+            Vector2 pt3 = Util.Transform(p3X, p3Y, transform);
+            Vector2 pt4 = Util.Transform(p4X, p4Y, transform);
 
             AddRectangleData(pt1.X, pt1.Y, pt2.X, pt2.Y, pt3.X, pt3.Y, pt4.X, pt4.Y, color);
         }
@@ -155,7 +155,7 @@ namespace MGL.Graphics
             DrawLine(p4X, p4Y, p1X, p1Y, thickness, color);
         }
 
-        public void DrawRectangle(float x, float y, float width, float height, float thickness, MGLTransform transform, Color color)
+        public void DrawRectangle(float x, float y, float width, float height, float thickness, Transform transform, Color color)
         {
             float p1X = x;
             float p1Y = y + height;
@@ -166,10 +166,10 @@ namespace MGL.Graphics
             float p4X = x;
             float p4Y = y;
 
-            Vector2 pt1 = MGLUtil.Transform(p1X, p1Y, transform);
-            Vector2 pt2 = MGLUtil.Transform(p2X, p2Y, transform);
-            Vector2 pt3 = MGLUtil.Transform(p3X, p3Y, transform);
-            Vector2 pt4 = MGLUtil.Transform(p4X, p4Y, transform);
+            Vector2 pt1 = Util.Transform(p1X, p1Y, transform);
+            Vector2 pt2 = Util.Transform(p2X, p2Y, transform);
+            Vector2 pt3 = Util.Transform(p3X, p3Y, transform);
+            Vector2 pt4 = Util.Transform(p4X, p4Y, transform);
 
             DrawLine(pt1.X, pt1.Y, pt2.X, pt2.Y, thickness, color);
             DrawLine(pt2.X, pt2.Y, pt3.X, pt3.Y, thickness, color);

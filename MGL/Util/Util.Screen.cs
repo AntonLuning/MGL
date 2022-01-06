@@ -3,7 +3,7 @@ using System;
 
 namespace MGL
 {
-    public static partial class MGLUtil
+    public static partial class Util
     {
         public static void ToggleFullScreen(GraphicsDeviceManager graphics)
         {

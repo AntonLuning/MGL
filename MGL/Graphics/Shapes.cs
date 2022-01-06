@@ -4,7 +4,7 @@ using System;
 
 namespace MGL.Graphics
 {
-    public sealed partial class MGLShapes : IDisposable
+    public sealed partial class Shapes : IDisposable
     {
         private const int MAX_VERTEX_COUNT = 1024;
         private const int MAX_INDEX_COUNT = 3072;   // 3 * MAX_VERTEX_COUNT
@@ -14,7 +14,7 @@ namespace MGL.Graphics
 
         private bool _isDisposed;
         private Game _game;
-        private MGLCamera _camera;
+        private Camera _camera;
         private BasicEffect _effect;
 
         private VertexPositionColor[] _vertices;
@@ -25,7 +25,7 @@ namespace MGL.Graphics
 
         private bool _isStarted;
 
-        public MGLShapes(Game game)
+        public Shapes(Game game)
         {
             _game = game ?? throw new ArgumentNullException("game");
             _isDisposed = false;
@@ -61,7 +61,7 @@ namespace MGL.Graphics
             _isDisposed = true;
         }
 
-        public void Begin(MGLCamera camera)
+        public void Begin(Camera camera)
         {
             if (_isStarted)
                 throw new InvalidOperationException("Batching already started.");

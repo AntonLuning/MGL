@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace MGL
 {
-    public static partial class MGLUtil
+    public static partial class Util
     {
         public static int Clamp(int value, int min, int max)
         {
@@ -59,7 +59,7 @@ namespace MGL
             return new Vector2(vector.X * invLength, vector.Y * invLength);
         }
 
-        public static Vector2 Transform(Vector2 vector, MGLTransform transform)
+        public static Vector2 Transform(Vector2 vector, Transform transform)
         {
             float scaleX = vector.X * transform.ScaleX;
             float scaleY = vector.Y * transform.ScaleY;
@@ -73,7 +73,7 @@ namespace MGL
             return new Vector2(translateX, translateY);
         }
 
-        public static Vector2 Transform(float x, float y, MGLTransform transform)
+        public static Vector2 Transform(float x, float y, Transform transform)
         {
             return Transform(new Vector2(x, y), transform); 
         }

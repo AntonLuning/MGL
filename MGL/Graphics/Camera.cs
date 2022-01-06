@@ -4,7 +4,7 @@ using System;
 
 namespace MGL.Graphics
 {
-    public sealed class MGLCamera
+    public sealed class Camera
     {
         private const float MIN_Z = 1f;
         private const float MAX_Z = 2048f;
@@ -27,7 +27,7 @@ namespace MGL.Graphics
         public Matrix View { get { return _view; } }
         public Matrix Projection { get { return _projection; } }
 
-        public MGLCamera(MGLScreen screen)
+        public Camera(Screen screen)
         {
             if (screen == null)
                 throw new ArgumentNullException("screen");
@@ -70,12 +70,12 @@ namespace MGL.Graphics
 
         public void MoveZ(float amount)
         {
-            _z = MGLUtil.Clamp(_z + amount, MIN_Z, MAX_Z);
+            _z = Util.Clamp(_z + amount, MIN_Z, MAX_Z);
         }
 
         public void MoveZTo(float value)
         {
-            _z = MGLUtil.Clamp(value, MIN_Z, MAX_Z);
+            _z = Util.Clamp(value, MIN_Z, MAX_Z);
         }
 
         public void ResestZ()
@@ -85,19 +85,19 @@ namespace MGL.Graphics
 
         public void IncZoom()
         {
-            _zoom = MGLUtil.Clamp(++_zoom, MIN_ZOOM, MAX_ZOOM);
+            _zoom = Util.Clamp(++_zoom, MIN_ZOOM, MAX_ZOOM);
             _z = _baseZ / _zoom;
         }
 
         public void DecZoom()
         {
-            _zoom = MGLUtil.Clamp(--_zoom, MIN_ZOOM, MAX_ZOOM);
+            _zoom = Util.Clamp(--_zoom, MIN_ZOOM, MAX_ZOOM);
             _z = _baseZ / _zoom;
         }
 
         public void SetZoom(int amount)
         {
-            _zoom = MGLUtil.Clamp(amount, MIN_ZOOM, MAX_ZOOM);
+            _zoom = Util.Clamp(amount, MIN_ZOOM, MAX_ZOOM);
             _z = _baseZ / _zoom;
         }
 

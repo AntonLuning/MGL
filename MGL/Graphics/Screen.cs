@@ -4,7 +4,7 @@ using System;
 
 namespace MGL.Graphics
 {
-    public sealed class MGLScreen : IDisposable
+    public sealed class Screen : IDisposable
     {
         private const int MIN_DIM = 128;
         private const int MAX_DIM = 4096;
@@ -17,13 +17,13 @@ namespace MGL.Graphics
         public int Width { get { return _renderTarget.Width; } }
         public int Height { get { return _renderTarget.Height; } }
 
-        public MGLScreen(Game game, int width, int height)
+        public Screen(Game game, int width, int height)
         {
             _game = game ?? throw new ArgumentNullException("game");
             _isDisposed = false;
 
-            width = MGLUtil.Clamp(width, MIN_DIM, MAX_DIM);
-            height = MGLUtil.Clamp(height, MIN_DIM, MAX_DIM);
+            width = Util.Clamp(width, MIN_DIM, MAX_DIM);
+            height = Util.Clamp(height, MIN_DIM, MAX_DIM);
             _renderTarget = new RenderTarget2D(_game.GraphicsDevice, width, height);
             _isSet = false;
         }
