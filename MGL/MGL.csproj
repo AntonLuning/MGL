@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-	<VersionPrefix>1.0.1</VersionPrefix>
+	<VersionPrefix>1.0.3</VersionPrefix>
     <Authors>AntonLuning</Authors>
     <Description>MonoGame 2D library</Description>    
 	<PackageProjectUrl>https://github.com/AntonLuning/MGL</PackageProjectUrl>

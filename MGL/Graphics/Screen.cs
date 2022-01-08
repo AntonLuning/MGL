@@ -12,6 +12,7 @@ namespace MGL.Graphics
         private bool _isDisposed;
         private Game _game;
         private RenderTarget2D _renderTarget;
+        private bool _clipScreen;
         private bool _isSet;
 
         public int Width { get { return _renderTarget.Width; } }
@@ -25,6 +26,19 @@ namespace MGL.Graphics
             width = Util.Clamp(width, MIN_DIM, MAX_DIM);
             height = Util.Clamp(height, MIN_DIM, MAX_DIM);
             _renderTarget = new RenderTarget2D(_game.GraphicsDevice, width, height);
+            _clipScreen = true;
+            _isSet = false;
+        }
+
+        public Screen(Game game, int height, float aspectRatio)
+        {
+            _game = game ?? throw new ArgumentNullException("game");
+            _isDisposed = false;
+          
+            height = Util.Clamp(height, MIN_DIM, MAX_DIM);
+            int width = (int)(height * aspectRatio);
+            _renderTarget = new RenderTarget2D(_game.GraphicsDevice, width, height);
+            _clipScreen = false;
             _isSet = false;
         }
 
@@ -76,6 +90,10 @@ namespace MGL.Graphics
         internal Rectangle CalculateDestinationRectangle()
         {
             Rectangle backBufferBounds = _game.GraphicsDevice.PresentationParameters.Bounds;
+
+            if (!_clipScreen)
+                return backBufferBounds;
+            
             float backBufferAR = (float)backBufferBounds.Width / backBufferBounds.Height;
             float screenAR = (float)Width / Height;
 
@@ -95,10 +113,7 @@ namespace MGL.Graphics
                 rY = (backBufferBounds.Height - rH) / 2f;
             }
 
-            return new Rectangle((int)rX, (int)rY, (int)rW, (int)rH);
+            return new Rectangle((int)rX, (int)rY, (int)rW, (int)rH);   
         }
-
-        // TODO: Option to determine if the gameplay screen should be clipped or extended accordingly to the backBufferSize.
-        // Option in the constructor -> If statement in the Present() method
     }
 }

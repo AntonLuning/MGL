@@ -31,22 +31,6 @@ namespace MGL.Graphics
             return area;
         }
 
-        private bool IsPointInTriangle(Vector2 pt, Vector2 trianglePt1, Vector2 trianglePt2, Vector2 trianglePt3)
-        {
-            Vector2 ab = trianglePt2 - trianglePt1;
-            Vector2 bc = trianglePt3 - trianglePt2;
-            Vector2 ca = trianglePt1 - trianglePt3;
-
-            Vector2 ap = pt - trianglePt1;
-            Vector2 bp = pt - trianglePt2;
-            Vector2 cp = pt - trianglePt3;
-
-            if (Util.Cross(ab, ap) > 0f || Util.Cross(bc, bp) > 0f || Util.Cross(ca, cp) > 0f)
-                return false;
-
-            return true;
-        }
-
         public void DrawPolygonFilled(Vector2[] vertices, Transform transform, Color color)
         {
             if (!_isStarted)
@@ -94,7 +78,7 @@ namespace MGL.Graphics
                         if (j == index1 || j == index2 || j == index3)
                             continue;
 
-                        if (IsPointInTriangle(vertices[j], pt2, pt1, pt3))
+                        if (Util.IsPointInTriangle(vertices[j], pt2, pt1, pt3))
                         {
                             triangleOK = false;
                             break;
